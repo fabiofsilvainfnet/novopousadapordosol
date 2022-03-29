@@ -1,4 +1,4 @@
-package br.edu.infnet.novopousadapordosol.model;
+package br.edu.infnet.pousada.model;
 
 import java.io.Serializable;
 
@@ -8,15 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "pessoa")
-@Valid
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,12 +21,20 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "Valor para NOME não pode ser nulo")
+	@NotNull(message = "Nome da pessoa não pode ser nulo")
 	@Column(nullable = false)
 	private String nome;
+
+	@NotNull(message = "CPF da pessoa não pode ser nulo")
 	private String cpf;
 	private String endereco;
 	private String telefone;
+	
+	@Email(message = "Email inválido")
+	@Column(length = 100)
+	private String email;
+
+	@NotNull(message = "Informação de ativação do registro da pessoa não pode ser nula")
 	private Boolean ativo;
 	
 	public Pessoa() {
@@ -83,6 +87,14 @@ public class Pessoa implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

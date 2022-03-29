@@ -1,4 +1,4 @@
-package br.edu.infnet.novopousadapordosol;
+package br.edu.infnet.pousada;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

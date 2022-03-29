@@ -1,4 +1,4 @@
-package br.edu.infnet.novopousadapordosol.utils;
+package br.edu.infnet.pousadal.utils;
 
 import org.springframework.stereotype.Component;
 
