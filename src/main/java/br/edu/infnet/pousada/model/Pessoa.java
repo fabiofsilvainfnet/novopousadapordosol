@@ -1,12 +1,14 @@
 package br.edu.infnet.pousada.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -36,6 +38,10 @@ public class Pessoa implements Serializable {
 
 	@NotNull(message = "Informação de ativação do registro da pessoa não pode ser nula")
 	private Boolean ativo;
+	
+	@OneToMany(mappedBy = "pessoa")
+	private List<Usuario> usuarios;
+	
 	
 	public Pessoa() {
 		super();
@@ -96,6 +102,14 @@ public class Pessoa implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	
 }
